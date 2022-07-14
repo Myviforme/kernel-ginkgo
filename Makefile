@@ -747,8 +747,6 @@ ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 KBUILD_CFLAGS   += -Os
 else
 KBUILD_CFLAGS   += -O3 -ffp-contract=fast
-ifeq ($(cc-name),clang)
-KBUILD_CFLAGS	+= -mcpu=cortex-a53 -mtune=cortex-a53
 
 # Polly may optimise loops with dead paths beyound what the linker
 # can understand. This may negate the effect of the linker's DCE
@@ -757,7 +755,6 @@ KBUILD_CFLAGS	+= -mcpu=cortex-a53 -mtune=cortex-a53
 ifdef CONFIG_LD_DEAD_CODE_DATA_ELIMINATION
 KBUILD_CFLAGS	+= -mllvm -polly-run-dce
 endif
-endif # $(cc-name),clang
 endif # CONFIG_CC_OPTIMIZE_FOR_SIZE
 
 # Tell gcc to never replace conditional load with a non-conditional one
