@@ -379,7 +379,7 @@ static void sugov_iowait_boost(struct sugov_cpu *sg_cpu, unsigned long *util,
 	}
 
 #ifdef CONFIG_UCLAMP_TASK
-   	*util = uclamp_util_with(rq, *util, NULL);
+   	*util = uclamp_util_with(NULL, *util, NULL);
 #endif	
 }
 
